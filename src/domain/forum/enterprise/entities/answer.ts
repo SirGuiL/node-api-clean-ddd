@@ -2,7 +2,7 @@ import { Entity } from '@/core/entities/entity'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Optional } from '@/core/types/optional'
 
-interface AnswerProps {
+export interface AnswerProps {
   authorId: UniqueEntityId
   questionId: UniqueEntityId
   content: string
@@ -46,14 +46,16 @@ export class Answer extends Entity<AnswerProps> {
 
   static create(
     props: Optional<AnswerProps, 'createdAt'>,
-    id?: UniqueEntityId,
+    // eslint-disable-next-line
+    id?: UniqueEntityId
   ) {
     const answer = new Answer(
       {
         ...props,
         createdAt: new Date(),
       },
-      id,
+      // eslint-disable-next-line
+      id
     )
 
     return answer
